@@ -14,8 +14,8 @@ public class ListFrame extends JFrame // Declaração de classe pública com her
       Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, 
       Color.RED, Color.WHITE, Color.YELLOW};
       
-   private final JList<String> tamanhoList; // Declaração de variável privativa da classe que não pode ser alterada que armazena uma lista de strings
-   private static final String[] tamanhoNames = {"Small", "Medium", "Big"};
+   private final JList<String> sizeJList;
+   private static final String[] namesJList = {"Small", "Medium", "Big"};
    
    public ListFrame() // Declaração do método construtor
    { // Abertura do bloco de códigos
@@ -24,16 +24,13 @@ public class ListFrame extends JFrame // Declaração de classe pública com her
       
       colorJList = new JList<String>(colorNames); // Atribuição de uma matriz de string à variável com o parametro o nome das cores
       colorJList.setVisibleRowCount(5); // Definição de quantas linhas serão visiveis quando abrir as opções do colorJList
-   
-      tamanhoList = new JList<String>(tamanhoNames);
-
-      tamanhoList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-      
       colorJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Define quantas opções são possiveis selecionar por vez, no caso apenas uma
-
-      add(new JScrollPane(tamanhoList)); 
       
       add(new JScrollPane(colorJList)); // Adiciona um novo objeto do tipo JScrollPane que recebe parametro (colorJList)
+
+      sizeJList = new JList<String>(namesJList);
+      sizeJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+      add(new JScrollPane(sizeJList));       
       
       colorJList.addListSelectionListener( // Adiciona o escutador de lista de seleção ao colorJList
          new ListSelectionListener() // Objeto
@@ -47,14 +44,15 @@ public class ListFrame extends JFrame // Declaração de classe pública com her
             } 
          } 
       ); 
-      tamanhoList.addListSelectionListener( // Adiciona o escutador de lista de seleção ao colorJList
-         new ListSelectionListener() // Objeto
+
+      sizeJList.addListSelectionListener( 
+         new ListSelectionListener() 
          {   
             
-            @Override // Execução sobreescrita do método
-            public void valueChanged(ListSelectionEvent event) // Declaração de método que recebe o parametro event do ListSelectionEvent
+            @Override 
+            public void valueChanged(ListSelectionEvent event) 
             {
-               switch (tamanhoList.getSelectedIndex()) {
+               switch (sizeJList.getSelectedIndex()) {
                   case 0:
                      setSize(350, 150);
                      break;
