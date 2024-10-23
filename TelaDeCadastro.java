@@ -110,6 +110,24 @@ public class TelaDeCadastro extends JFrame{
             }
         );
 
+        btnCancelar.addActionListener(
+            new ActionListener() {
+                @Override
+
+                public void actionPerformed(ActionEvent event){
+                    txtNome.setText("");
+                    txtEmail.setText("");
+                    txtSenha.setText("");
+
+                    if(JOptionPane.showConfirmDialog(null, "Deseja mesmo sair?") == 0) {
+                        System.exit(0);
+                    } else {
+                        txtNome.requestFocus();
+                    }
+                }
+            }
+        );
+
         setSize(300,300);
         setVisible(true);
     }
