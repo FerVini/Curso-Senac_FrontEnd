@@ -11,8 +11,8 @@ public class NavegadorDeRegistro extends TelaDePesquisa {
     public static void registrarPesquisa() {
         registroDePesquisa = txtPesquisa.getText().trim();
         if(registroDePesquisa.length() > 0){
-            clausulasDePesquisaComWhere = " where `nome` like '%" + registroDePesquisa + "%' or `email` '%" + registroDePesquisa + "%' ";
-            clausulasDePesquisaSemWhere = " and (`nome` like '%" + registroDePesquisa + "%' or `email` '%" + registroDePesquisa + "%') ";
+            clausulasDePesquisaComWhere = " where `nome` like '%" + registroDePesquisa + "%' or `email` like '%" + registroDePesquisa + "%' ";
+            clausulasDePesquisaSemWhere = " and (`nome` like '%" + registroDePesquisa + "%' or `email` like '%" + registroDePesquisa + "%') ";
         }
         vaParaPrimeiroRegistro();
     }
